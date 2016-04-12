@@ -26,6 +26,24 @@ getrange "abc" 1 2  //bc  end-index inclusive
 ltrim lname 0 3   //keep 0 1 2 3
 ```
 
+######transaction
+```
+multi
+incrby a 10
+incrby b 20
+exec
+```
+but this is not safe. Add a watch
+```
+watch a
+multi
+incrby a 10
+incrby b 20
+exec
+```
+
+
+
 #####Admin and config
 ######configuration
 Linux
